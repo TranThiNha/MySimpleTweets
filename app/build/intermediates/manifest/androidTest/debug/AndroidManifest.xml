@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.codepath.apps.mysimpletweets.test">
+    package="com.codepath.apps.restclienttemplate.test">
 
-    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="21" />
+    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="24" />
 
     <application>
         <uses-library android:name="android.test.runner" />

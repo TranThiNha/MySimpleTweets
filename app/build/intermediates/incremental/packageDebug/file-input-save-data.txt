@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Oct 29 15:03:50 ICT 2016
+#Sat Oct 29 15:19:28 ICT 2016
 210.set=ANDROID_RESOURCE
 282.file=C\:\\Users\\ThiNha\\Downloads\\android-rest-client-template-master\\MySimpleTweets\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_activity_chooser_view_list_item.xml
 14.set=ANDROID_RESOURCE

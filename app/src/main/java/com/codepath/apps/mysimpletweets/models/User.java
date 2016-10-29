@@ -1,5 +1,8 @@
 package com.codepath.apps.mysimpletweets.models;
 
+import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -8,9 +11,16 @@ import org.json.JSONObject;
  */
 public class User {
     //list attributea
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("id")
     private long uid;
+
+    @SerializedName("screen_name")
     private String screenName;
+
+    @SerializedName("profile_image_url")
     private String profileImageUrl;
 
     public String getName() {
@@ -30,19 +40,18 @@ public class User {
     }
 
     public static User fromJSON(JSONObject json){
-        User u = new User();
+        Gson gson = new Gson();
+        User result = new User();
+        User temp = gson.fromJson(String.valueOf(json),User.class);
         //Extract and fill the values
-        try {
-            u.name = json.getString("name");
-            u.uid = json.getLong("id");
-            u.screenName = json.getString("screen_name");
-            u.profileImageUrl = json.getString("profile_image_url");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+
+        result.name = temp.getName();
+        result.uid = temp.getUid();
+        result.screenName = temp.getScreenName();
+        result.profileImageUrl = temp.getProfileImageUrl();
 
         //return  a user
-        return  u;
+        return  result;
     }
 
 }
