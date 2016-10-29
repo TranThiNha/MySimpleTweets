@@ -2,21 +2,32 @@ package com.codepath.apps.mysimpletweets;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.codepath.oauth.OAuthLoginActionBarActivity;
+import com.loopj.android.http.JsonHttpResponseHandler;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.scribe.builder.api.TwitterApi;
+
+import cz.msebera.android.httpclient.Header;
 
 public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
 
-	Button btnLogin;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 	}
+
+	//send anAPI request to get the timeline json
+	//fill  the listview by reating the tweet object from the json
 
 
 	// Inflate the menu; this adds items to the action bar if it is present.

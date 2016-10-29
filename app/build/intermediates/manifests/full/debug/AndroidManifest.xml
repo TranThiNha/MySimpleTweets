@@ -37,6 +37,9 @@
                     android:scheme="oauth" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.codepath.apps.mysimpletweets.TimelineActivity"
+            android:label="@string/title_activity_timeline" />
     </application>
 
 </manifest>

@@ -1,7 +1,6 @@
 package com.raizlabs.android.dbflow.config;
 
 import com.codepath.apps.mysimpletweets.MyDatabase;
-import com.codepath.apps.mysimpletweets.models.SampleModel;
 import com.codepath.apps.mysimpletweets.models.SampleModel_Adapter;
 import java.lang.Class;
 import java.lang.Override;
