@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\exploded-aar\com.github.Raizlabs.DBFlow\dbflow\3.1.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="58342b97007b49e4a536bdd30b9c3928be81ae59">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\com.github.Raizlabs.DBFlow-dbflow-3.1.1_42af88be7eea55a73f1071987c65e23b4b4f6c5f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\.gradle\caches\modules-2\files-2.1\cz.msebera.android\httpclient\4.3.6\526a9f794eab830eae4f23a62c572878b3f491ab\httpclient-4.3.6.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="526a9f794eab830eae4f23a62c572878b3f491ab">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\httpclient-4.3.6_59d0313740aead981b6ed343716a6c8ac4a2483b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.0\jars\libs\internal_impl-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="045be695d968dd707691cc55d23746dbf8cf569a">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.0_1bd9414787ae9ae9422eedf0c751cf55c94c3d8b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.0\jars\libs\internal_impl-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="60d7b23621d31e6f42f4f76f16af467e57a20cda">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.0_122ea1fa0924e4832afe830982d96453f52ea0f0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="c84e216d9bf618464d6b9564d71d9a656433e7c4">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-24.2.0_f544a8624948856160cb65f2409cd23d739ac1d7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="fcc945a86ebcbf527429acb8216ec7dae2c06417">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-24.2.0_1f6b61a0f98a4bef92be2010148cd244265bf0c2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\picasso-2.5.2_c359d53cbe7811dabc255d3c33c51a15bc38c969.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.0\jars\libs\internal_impl-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="032a4b53def5e2ceedfc2e793b126c0163cfa1dd">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.0_e3d46a396e026e583cb3b64c72cdd5a789afaa5c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.0\jars\libs\internal_impl-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="771b3cc0e597b54da25f8086ba73180c59c6bc71">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.0_571b44f48a381a65682e767f8015748f211ce02b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.0\jars\libs\internal_impl-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="6e02e34594ebe9c0501ffda8dd48497f81b82977">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.0_9d25b5d50ab614871b95d89c2dc0139223bc0222.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\.gradle\caches\modules-2\files-2.1\com.github.Raizlabs.DBFlow\dbflow-core\3.1.1\f205bcc63da15f536f333e1c82de622fdbb35956\dbflow-core-3.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="f205bcc63da15f536f333e1c82de622fdbb35956">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\dbflow-core-3.1.1_d1ce64962cd8241b67c2a225be3bbac39085f64c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\exploded-aar\com.codepath.libraries\android-oauth-handler\1.1.0\jars\libs\codepath-utils.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="4a948907bd42abbd2f5f18e66c50aa81e5d07791">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\codepath-utils_74d1165839aef57ebc1921d3e590ff4e3e248a8c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\.gradle\caches\modules-2\files-2.1\com.loopj.android\android-async-http\1.4.9\386a4339ffe52d5d63e80f9bed8d2b1d1a418249\android-async-http-1.4.9.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.9_bd4af2e3d3bdb3aa4842af6c6b0735062a4f6307.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\exploded-aar\com.codepath.libraries\android-oauth-handler\1.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="bac2c6fd56dae63bf540102c8f12cfbf5802545f">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\com.codepath.libraries-android-oauth-handler-1.1.0_47c2420c4c2243bb70efb6b1866ed2991f898acf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.0\support-annotations-24.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="6be858a75633b1f0a2d24cad740db57775cb6871">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\support-annotations-24.2.0_494cfc8eb2e8125f6e937d54725104506c90b1da.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d8bd2268fdcbfd52c76ade65d9900cd8def93a44">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-24.2.0_ad984c50318392d966deb8373b7784ad717e5d96.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="beac40bcc8a320a896dd15f5109cfcaea5e1e0e3">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-24.2.0_7c88eabdfc242b104cb30bd8792cdec16cb980ee.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\exploded-aar\com.codepath.libraries\android-oauth-handler\1.1.0\jars\libs\scribe-codepath-0.0.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="0492333dc94d7c11c933116e6ddee16a60594e98">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\scribe-codepath-0.0.3_2f2696d0950a0e983d5a39a697d1dcc894a187cc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="f9b41622897665678d31d78e57a361cb0cebcb0d">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-24.2.0_c6b85ce0ef206ccd39435538cdb8ce31ea53f716.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="c3c638be6e650b165ab9ae144857b64e82787fad">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-24.2.0_d1e3aee7720f3bcba87db2a012a8f9fe99e9dd3d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="45f5eda279825ff470e3f51019d374d1ef61e000">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-24.2.0_c79cd54e4694469366d334b2a21029b668d3bc33.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="f3ee23ef25c9a8fe3d40246d0b7097267963a612">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-24.2.0_2fb72697ef7e9ba2d1dedd18109a9ff353da7cdc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="6eb9107eb34d2fe2b020662b7fbbec991dcba846">
+        <dex dex="C:\Users\ThiNha\Downloads\android-rest-client-template-master\MySimpleTweets\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-24.2.0_11f6b5c42b3afb2fe1a78c2f8b86a379e513773a.jar" />
+    </item>
+
+</items>
