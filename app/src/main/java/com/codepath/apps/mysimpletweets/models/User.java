@@ -6,10 +6,12 @@ import com.google.gson.annotations.SerializedName;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 /**
  * Created by ThiNha on 10/29/2016.
  */
-public class User {
+public class User implements Serializable {
     //list attributea
     @SerializedName("name")
     private String name;
@@ -22,6 +24,13 @@ public class User {
 
     @SerializedName("profile_image_url")
     private String profileImageUrl;
+
+    @SerializedName("favourites_count")
+    int favouritesCount;
+
+    public int getFavouritesCount() {
+        return favouritesCount;
+    }
 
     public String getName() {
         return name;
@@ -39,19 +48,6 @@ public class User {
         return profileImageUrl;
     }
 
-    public static User fromJSON(JSONObject json){
-        Gson gson = new Gson();
-        User result = new User();
-        User temp = gson.fromJson(String.valueOf(json),User.class);
-        //Extract and fill the values
 
-        result.name = temp.getName();
-        result.uid = temp.getUid();
-        result.screenName = temp.getScreenName();
-        result.profileImageUrl = temp.getProfileImageUrl();
-
-        //return  a user
-        return  result;
-    }
 
 }

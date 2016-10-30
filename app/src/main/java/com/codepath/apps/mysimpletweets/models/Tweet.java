@@ -29,9 +29,31 @@ public class Tweet implements Serializable {
     @SerializedName("id")
     long uid; //unique Id for the tweet
 
+    @SerializedName("location")
+    String location;
+
+
+
+    @SerializedName("retweet_count")
+    int retweetCount;
+
     @SerializedName("created_at")
     String createAt;
     String relativeTimestamp;
+
+    public String getLocation() {
+        return location;
+    }
+
+
+
+    public int getRetweetCount() {
+        return retweetCount;
+    }
+
+    public String getRelativeTimestamp() {
+        return relativeTimestamp;
+    }
 
     private User user;
     public String getBody() {
@@ -69,37 +91,5 @@ public class Tweet implements Serializable {
 
         return relativeDate;
     }
-
-    public Tweet fromJSON(JSONObject jsonObject){
-        Gson gson = new Gson();
-        Tweet result = new Tweet();
-        Tweet tweet = gson.fromJson(String.valueOf(jsonObject),Tweet.class);
-
-        //Extract the values from te json, store then
-        try {
-            result.relativeTimestamp =String.valueOf(getRelativeTimeAgo(tweet.getCreateAt()));
-            result.body = tweet.getBody();
-            result.uid = tweet.getUid();
-            result.createAt = tweet.getCreateAt();
-            result.user = User.fromJSON(jsonObject.getJSONObject("user"));
-            //tweet.user
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        //return the tweet oject
-        return result;
-    }
-
-    public static ArrayList<Tweet> fromJSONArray(JSONArray jsonArray) throws JSONException {
-        ArrayList<Tweet> tweets = new ArrayList<>();
-        Gson gson = new Gson();
-        for (int i =0; i< jsonArray.length(); i++){
-            tweets.add(gson.fromJson(String.valueOf(jsonArray.get(i)),Tweet.class));
-        }
-        return  tweets;
-    }
-
 
 }

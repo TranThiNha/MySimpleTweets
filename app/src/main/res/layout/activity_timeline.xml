@@ -4,14 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".TimelineActivity">
+    tools:context=".activity.TimelineActivity">
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvResult"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/lvTweets">
+        >
 
-    </ListView>
+    </RelativeLayout>
 
     <ProgressBar
         android:layout_width="70dp"
