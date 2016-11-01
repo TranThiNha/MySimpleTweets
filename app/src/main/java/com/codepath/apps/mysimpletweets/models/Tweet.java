@@ -1,10 +1,13 @@
 package com.codepath.apps.mysimpletweets.models;
 
+import android.provider.MediaStore;
 import android.text.format.DateUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,7 +16,9 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import cz.msebera.android.httpclient.ParseException;
 
@@ -39,12 +44,24 @@ public class Tweet implements Serializable {
 
     @SerializedName("created_at")
     String createAt;
+
+
     String relativeTimestamp;
 
     public String getLocation() {
         return location;
     }
 
+    @SerializedName("entities")
+    private JsonObject entities;
+
+    private List<Media>medias;
+
+    public List<Media>getMedias(){
+        Gson gson = new Gson();
+        medias = gson.fromJson(entities.getAsJsonArray("media"),new TypeToken<List<Media>>(){}.getType());
+        return medias;
+    }
 
 
     public int getRetweetCount() {
