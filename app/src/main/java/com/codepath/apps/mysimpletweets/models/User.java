@@ -1,12 +1,15 @@
 package com.codepath.apps.mysimpletweets.models;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by ThiNha on 10/29/2016.
@@ -27,6 +30,28 @@ public class User implements Serializable {
 
     @SerializedName("favourites_count")
     int favouritesCount;
+
+    @SerializedName("followers_count")
+    int followersCount;
+
+    //@SerializedName("following")
+    //int following;
+
+    @SerializedName("status")
+    JsonObject status;
+
+    public int getFollowersCount() {
+        return followersCount;
+    }
+
+   // public int getFollowing() {
+     //   return following;
+    //}
+    public int getRetweetCount(){
+        Gson gson = new Gson();
+        int retweetCount = Integer.valueOf(status.get("retweet_count").toString());
+        return retweetCount;
+    }
 
     public int getFavouritesCount() {
         return favouritesCount;

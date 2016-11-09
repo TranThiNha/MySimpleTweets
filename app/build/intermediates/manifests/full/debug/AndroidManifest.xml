@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="21"
+        android:minSdkVersion="23"
         android:targetSdkVersion="24" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -41,8 +41,8 @@
             android:name="com.codepath.apps.mysimpletweets.activity.TimelineActivity"
             android:icon="@drawable/ic_twitter"
             android:label="@string/title_activity_timeline" />
-        <activity android:name="com.codepath.apps.mysimpletweets.PostNewTweetActivity" />
-        <activity android:name="com.codepath.apps.mysimpletweets.DetailTweetActivity" />
+        <activity android:name="com.codepath.apps.mysimpletweets.activity.DetailTweetActivity" />
+        <activity android:name="com.codepath.apps.mysimpletweets.activity.ProfileActivity" />
     </application>
 
 </manifest>

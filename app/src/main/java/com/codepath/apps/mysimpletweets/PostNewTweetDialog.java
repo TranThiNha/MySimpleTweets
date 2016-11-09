@@ -93,8 +93,8 @@ public class PostNewTweetDialog extends DialogFragment  {
             }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                tvNumberCharacter.setText(String.valueOf(140 - s.size()));
-                if (s.size() > 140)
+                tvNumberCharacter.setText(String.valueOf(140 - s.length()));
+                if (s.length() > 140)
                 {
                     tvNumberCharacter.setTextColor(ContextCompat.getColor(tvNumberCharacter.getContext(),android.R.color.holo_red_light));
                 }
@@ -103,7 +103,7 @@ public class PostNewTweetDialog extends DialogFragment  {
                     tvNumberCharacter.setTextColor(Color.parseColor("#9E9E9E"));
                 }
 
-                if (s.size() > 0 && s.size() <= 140)
+                if (s.length() > 0 && s.length() <= 140)
                 {
                     //Limit the number of char in one tweet
                     btnTweet.setEnabled(true);
@@ -123,7 +123,7 @@ public class PostNewTweetDialog extends DialogFragment  {
         });
     }
 
-    @Override
+    /*@Override
     public void onPause() {
         //Get existing layout params of window
         ViewGroup.LayoutParams layoutParams = getDialog().getWindow().getAttributes();
@@ -137,7 +137,7 @@ public class PostNewTweetDialog extends DialogFragment  {
 
         // Call super onResume after sizing
         super.onResume();
-    }
+    }*/
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

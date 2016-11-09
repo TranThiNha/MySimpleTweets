@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/mihome"
+        android:icon="@drawable/ic_twitter"
+        app:showAsAction="ifRoom|withText"
+        android:title="home">
 
+    </item>
+
+    <item
+        android:id="@+id/miProfile"
+        android:icon="@drawable/ic_profile"
+        app:showAsAction="ifRoom"
+        android:title=""></item>
     <item
         android:id="@+id/miEdit"
         android:icon="@drawable/ic_edit"

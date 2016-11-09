@@ -1,21 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="360dp"
+    android:orientation="vertical" android:layout_width="380dp"
     android:layout_height="500dp">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/btnClear"
+            android:background="@drawable/ic_clear"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="name"
+                android:layout_marginRight="20dp"
+                android:id="@+id/tvProfileName"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mail"
+                android:id="@+id/tvProfileEmail"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="60dp"
+            android:src="@drawable/ic_profile"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:id="@+id/ivProfileImage"/>
+    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvReplyTo"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_weight="6"
         android:layout_height="0dp"
         android:id="@+id/edtStatus"
         android:hint="What's happening?"
+        android:gravity="top|start"
         />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-       android:layout_margin="10dp">
+        android:layout_margin="10dp"
+        android:layout_marginRight="20dp">
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"

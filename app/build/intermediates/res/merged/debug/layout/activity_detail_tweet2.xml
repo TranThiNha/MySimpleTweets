@@ -44,11 +44,7 @@
         android:autoLink="all"
         android:layout_height="wrap_content"
         android:id="@+id/tvBody"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="10:00"
-        android:id="@+id/tvCreatedAt"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:textStyle="bold"
-            android:id="@+id/tvReTweet"
+            android:id="@+id/tvDetailReTweet"
             android:text="0"/>
         <TextView
             android:layout_width="wrap_content"
@@ -71,7 +67,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvNumberOfLike"
+            android:id="@+id/tvDetailNumberOfLike"
             android:layout_marginRight="10dp"
             android:textStyle="bold"
             android:text="0"/>
@@ -87,23 +83,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <Button
+        <ImageButton
             android:layout_width="@dimen/size_icon"
             android:layout_height="@dimen/size_icon"
-            android:background="@drawable/ic_goto"
+            android:background="@drawable/ic_reply"
+            android:id="@+id/btnDetailReply"
             android:layout_marginLeft="25dp"
             />
 
-        <Button
+        <ImageButton
             android:layout_width="@dimen/size_icon"
             android:layout_height="@dimen/size_icon"
             android:layout_marginLeft="35dp"
+            android:id="@+id/btnDetailRetweet"
             android:background="@drawable/ic_retweet"/>
 
-        <Button
+        <ImageButton
             android:layout_width="@dimen/size_icon"
             android:layout_height="@dimen/size_icon"
             android:layout_marginLeft="35dp"
+            android:id="@+id/btnDetailLike"
             android:background="@drawable/ic_like"/>
 
     </LinearLayout>

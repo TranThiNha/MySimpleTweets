@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.codepath.apps.mysimpletweets.PostNewTweetDialog;
 import com.codepath.apps.mysimpletweets.ReplyDialog;
+import com.codepath.apps.mysimpletweets.adapter.FragmentSimpleAdapter;
 import com.codepath.apps.mysimpletweets.models.EndlessRecyclerViewScrollListener;
 import com.codepath.apps.mysimpletweets.R;
 import com.codepath.apps.mysimpletweets.adapter.TweetsArrayAdapter;
@@ -47,14 +49,18 @@ public class TimelineActivity extends AppCompatActivity {
     public static String KEY_TWEET ="tweet";
     private LinearLayoutManager mLayoutManager;
     private SwipeRefreshLayout mSwipeContainer;
-
+    private ViewPager mViewPager;
+    private FragmentSimpleAdapter mFragmentSimpleAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
         rvTweets = (RecyclerView) findViewById(R.id.rvResult);
         mSwipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
-        //create the arraylist
+        mViewPager = (ViewPager) findViewById(R.id.viewPager);
+       // mFragmentSimpleAdapter = new FragmentSimpleAdapter(getSupportFragmentManager());
+        //mViewPager.setAdapter(mFragmentSimpleAdapter);
+       //create the arraylist
         //construct the adapter fromdata source
         mTweetsArrayAdapter = new TweetsArrayAdapter();
         //connect adapter to listview
@@ -198,7 +204,9 @@ public class TimelineActivity extends AppCompatActivity {
         profileItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                return false;
+                Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
+                startActivity(intent);
+                return true;
             }
         });
         return super.onCreateOptionsMenu(menu);

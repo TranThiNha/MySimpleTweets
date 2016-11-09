@@ -63,8 +63,8 @@ public class ReplyDialog {
             }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                tvNumberCharacter.setText(String.valueOf(140 - s.size()));
-                if (s.size() > 140)
+                tvNumberCharacter.setText(String.valueOf(140 - s.length()));
+                if (s.length() > 140)
                 {
                     tvNumberCharacter.setTextColor(ContextCompat.getColor(tvNumberCharacter.getContext(),android.R.color.holo_red_light));
                 }
@@ -73,7 +73,7 @@ public class ReplyDialog {
                     tvNumberCharacter.setTextColor(Color.parseColor("#9E9E9E"));
                 }
 
-                if (s.size() > 0 && s.size() <= 140)
+                if (s.length() > 0 && s.length() <= 140)
                 {
                     //Limit the number of char in one tweet
                     btnTweet.setEnabled(true);

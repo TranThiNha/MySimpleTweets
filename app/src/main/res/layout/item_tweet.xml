@@ -5,6 +5,8 @@
     android:layout_height="wrap_content"
     android:id="@+id/tweet_container"
     android:clickable="true"
+    android:focusable="true"
+    android:background="?attr/selectableItemBackground"
     android:weightSum="1">
 
     <ImageView
@@ -39,37 +41,46 @@
             android:autoLink="all"
             android:layout_height="wrap_content"
             android:id="@+id/tvBody"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivMedia"/>
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <Button
+            <ImageButton
                 android:layout_width="25dp"
-                android:background="@drawable/ic_goto"
+                android:background="@drawable/ic_reply"
                 android:layout_height="25dp"
+                android:id="@+id/btnReply"
                 android:layout_marginRight="45dp"
                 />
 
-            <Button
+            <ImageButton
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_marginRight="45dp"
+                android:id="@+id/btnRetweet"
                 android:background="@drawable/ic_retweet"/>
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="wrap_content"
                 android:id="@+id/tvNumberOfRetweet"
+                android:text="0"
+                android:layout_marginRight="45dp"
+
                 android:layout_height="wrap_content" />
-            <Button
+            <ImageButton
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:background="@drawable/ic_unlike"/>
+                android:layout_marginLeft="35dp"
+                android:id="@+id/btnLike"
+                android:background="@drawable/ic_like"/>
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:id="@+id/tvNumberOfLike"
+                android:text="0"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
-
         </LinearLayout>
     </LinearLayout>
 
