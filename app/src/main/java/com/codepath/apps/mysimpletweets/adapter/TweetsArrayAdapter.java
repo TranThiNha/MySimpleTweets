@@ -48,7 +48,7 @@ public class TweetsArrayAdapter extends RecyclerView.Adapter<TweetsArrayAdapter.
     private ReplyListener mReplyListener;
     public static boolean btnLikeClicked = false;
     public static boolean btnRetweetClicked = false;
-
+    private Gson mGson;
 
     public interface ListClickListener {
         void onItemClick(Tweet tweet);
@@ -119,7 +119,21 @@ public class TweetsArrayAdapter extends RecyclerView.Adapter<TweetsArrayAdapter.
 
         holder.tvRetweet.setText(String.valueOf(tweet.getRetweetCount()));
 
-        holder.tvFavorite.setText(String.valueOf(tweet.getUser().getFavouritesCount()));
+        holder.tvFavorite.setText(String.valueOf(tweet.getFavouritesCount()));
+
+        if(tweet.isFavourited()){
+            holder.btnLike.setImageResource(R.drawable.ic_liked);
+        }
+        else{
+            holder.btnLike.setImageResource(R.drawable.ic_like);
+        }
+
+        if (tweet.isRetweeted()){
+            holder.btnRetweet.setImageResource(R.drawable.ic_retweeted);
+        }
+        else {
+            holder.btnRetweet.setImageResource(R.drawable.ic_retweet);
+        }
 
         Glide.with(holder.ivProfileImage.getContext())
                 .load(tweet.getUser().getProfileImageUrl())
@@ -154,6 +168,7 @@ public class TweetsArrayAdapter extends RecyclerView.Adapter<TweetsArrayAdapter.
         TwitterClient mClient;
         ImageView ivMedia;
 
+
         public TweetViewHolder( View itemView) {
             super(itemView);
              ivProfileImage= (ImageView)itemView.findViewById(R.id.ivProfileImage);
@@ -168,7 +183,7 @@ public class TweetsArrayAdapter extends RecyclerView.Adapter<TweetsArrayAdapter.
             btnReply = (ImageButton) itemView.findViewById(R.id.btnReply);
             ivMedia = (ImageView) itemView.findViewById(R.id.ivMedia);
             mClient = TwitterApplication.getRestClient();
-
+            mGson = new Gson();
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -192,47 +207,43 @@ public class TweetsArrayAdapter extends RecyclerView.Adapter<TweetsArrayAdapter.
             btnLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int position = getAdapterPosition();
-                    Tweet tweet = mTweets.get(position);
-
-                    if (btnLikeClicked)
-                    {
-
-                        btnRetweetClicked = false;
-                    }
-                    else {
-                        btnLikeClicked = true;
-                    }
-
-                    if (btnLikeClicked){
-                        mClient.updateLike(tweet.getBody().toString(),tweet.getUser().getFavouritesCount()+1,new JsonHttpResponseHandler(){
+                    final int position = getAdapterPosition();
+                    final Tweet tweet = mTweets.get(position);
+                    if (!tweet.isFavourited()){
+                        mClient.favouriteStatus(tweet.getUid(),new JsonHttpResponseHandler(){
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                                 super.onSuccess(statusCode, headers, response);
+                                Tweet tweet1 = mGson.fromJson(response.toString(),Tweet.class);
+                                mTweets.set(position,tweet1);
+                                tvFavorite.setText(String.valueOf(tweet1.getFavouritesCount()));
+                                btnLike.setImageResource(R.drawable.ic_liked);
                             }
                         });
-                        tvFavorite.setText(String.valueOf(tweet.getUser().getFavouritesCount()+1));
-                        btnLike.setImageResource(R.drawable.ic_liked);
+
                     }
                     else {
-                        tvFavorite.setText(String.valueOf(tweet.getUser().getFavouritesCount()));
-                        btnLike.setImageResource(R.drawable.ic_like);
+                        mClient.unFavouriteStatus(tweet.getUid(),new JsonHttpResponseHandler(){
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                super.onSuccess(statusCode, headers, response);
+                                Tweet tweet1 = mGson.fromJson(response.toString(),Tweet.class);
+                                mTweets.set(position,tweet1);
+                                tvFavorite.setText(String.valueOf(tweet1.getFavouritesCount()));
+                                btnLike.setImageResource(R.drawable.ic_like);
+                            }
+                        });
+
                     }
                 }
             });
             btnRetweet.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (btnRetweetClicked){
-                        btnRetweetClicked = false;
-                    }
-                    else{
-                        btnRetweetClicked= true;
-                    }
                     int position = getAdapterPosition();
                     Tweet tweet = mTweets.get(position);
 
-                    if (btnRetweetClicked){
+                    if (!tweet.isRetweeted()){
 
                         int count = tweet.getRetweetCount() + 1;
                         tvRetweet.setText(String.valueOf(tweet.getRetweetCount() + 1));

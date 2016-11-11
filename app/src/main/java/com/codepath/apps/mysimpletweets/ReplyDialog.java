@@ -137,7 +137,7 @@ public class ReplyDialog {
                         .into(ivProfileImage);
             }
         });
-	setCharsCounter(edtStatus);
+	    setCharsCounter(edtStatus);
         tvReplyTo.setText("reply to "+ mTweet.getUser().getName());
         edtStatus.requestFocus();
         dialog.show();

@@ -69,8 +69,8 @@ public class ProfileActivity extends AppCompatActivity {
                 tvName.setText(user.getName());
                 tvMail.setText(user.getScreenName());
 
-                tvNumberTweet.setText(String.valueOf(user.getRetweetCount()));
-                //tvNumberFollow.setText(String.valueOf(user.getFollowing()));
+                tvNumberTweet.setText(String.valueOf(user.getStatusesCount()));
+                tvNumberFollow.setText(String.valueOf(user.getFavouritesCount()));
                 tvNumberFollower.setText(String.valueOf(user.getFollowersCount()));
             }
         });

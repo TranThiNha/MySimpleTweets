@@ -3,6 +3,15 @@
 
     <item
         is-multidex="false"
+        jar="D:\MySimpleTweets\app\build\intermediates\exploded-aar\jp.wasabeef\glide-transformations\2.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="df451c6f391e3e32022fc964ed87bd57a5869128">
+        <dex dex="D:\MySimpleTweets\app\build\intermediates\pre-dexed\debug\jp.wasabeef-glide-transformations-2.0.1_e74295bf3d618afa3438eaf8bef8d93d9db9e554.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="D:\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
         jumboMode="false"
         optimize="true"
@@ -66,15 +75,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\MyPC\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.1"
-        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
-        <dex dex="D:\MySimpleTweets\app\build\intermediates\pre-dexed\debug\gson-2.7_5ae019c878ad7124e9be7bd2e1dc8c247d8477da.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="C:\Users\MyPC\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
         jumboMode="false"
         optimize="true"
@@ -120,12 +120,30 @@
     </item>
     <item
         is-multidex="false"
+        jar="D:\MySimpleTweets\app\build\intermediates\exploded-aar\com.jakewharton\butterknife\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="a07818a1ecabdb149998823429cce555af4b9cba">
+        <dex dex="D:\MySimpleTweets\app\build\intermediates\pre-dexed\debug\com.jakewharton-butterknife-8.4.0_d20cd4481d6a3688e793439842ac0091998bb9dd.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\MyPC\.gradle\caches\modules-2\files-2.1\com.loopj.android\android-async-http\1.4.9\386a4339ffe52d5d63e80f9bed8d2b1d1a418249\android-async-http-1.4.9.jar"
         jumboMode="false"
         optimize="true"
         revision="24.0.1"
         sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249">
         <dex dex="D:\MySimpleTweets\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.9_28147593bad91942754995d4bef410948d0ee975.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\design\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="D:\MySimpleTweets\app\build\intermediates\pre-dexed\debug\com.android.support-design-24.2.1_8967c522f8a4d7e31d3133626334c61970a4e86a.jar" />
     </item>
     <item
         is-multidex="false"
@@ -174,12 +192,39 @@
     </item>
     <item
         is-multidex="false"
+        jar="C:\Users\MyPC\.gradle\caches\modules-2\files-2.1\jp.co.cyberagent.android.gpuimage\gpuimage-library\1.3.0\e2e1ca1fbb73283fbc84a0d0b0e3e982d288c658\gpuimage-library-1.3.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="e2e1ca1fbb73283fbc84a0d0b0e3e982d288c658">
+        <dex dex="D:\MySimpleTweets\app\build\intermediates\pre-dexed\debug\gpuimage-library-1.3.0_de2fe09737e4cd7b889f9ccc042387d0a8060150.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
+        <dex dex="D:\MySimpleTweets\app\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-24.2.1_cc26d334e10776b5aeb3021c187c6c5ff42e57a4.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="D:\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="24.0.1"
         sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
         <dex dex="D:\MySimpleTweets\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-24.2.1_dab272c56f125b43e9f8bb93748be255aff0f8c9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MyPC\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife-annotations\8.4.0\ea392375cf9ff59234a82e7928a204215ccc98cd\butterknife-annotations-8.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="ea392375cf9ff59234a82e7928a204215ccc98cd">
+        <dex dex="D:\MySimpleTweets\app\build\intermediates\pre-dexed\debug\butterknife-annotations-8.4.0_aac77ee31d414eb6c30b93de0340e0df180a22d4.jar" />
     </item>
     <item
         is-multidex="false"
@@ -207,6 +252,15 @@
         revision="24.0.1"
         sha1="d5c731fc64c03dfe04d51134955b483551c35849">
         <dex dex="D:\MySimpleTweets\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-24.2.1_c18da20d45c311a2090204d997d9ebf4d660a098.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MyPC\.gradle\caches\modules-2\files-2.1\org.greenrobot\eventbus\3.0.0\ddd99896e9569eaababbe81b35d80e1b91c4ad85\eventbus-3.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="ddd99896e9569eaababbe81b35d80e1b91c4ad85">
+        <dex dex="D:\MySimpleTweets\app\build\intermediates\pre-dexed\debug\eventbus-3.0.0_45b8af5629d33eeef3d2cb917c27251e045c0172.jar" />
     </item>
     <item
         is-multidex="false"
@@ -246,12 +300,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\MyPC\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
+        jar="C:\Users\MyPC\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.0\c4ba5371a29ac9b2ad6129b1d39ea38750043eff\gson-2.8.0.jar"
         jumboMode="false"
         optimize="true"
         revision="24.0.1"
-        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="D:\MySimpleTweets\app\build\intermediates\pre-dexed\debug\support-annotations-24.2.1_54e9cccceda5d20684b644c76d822ab27e962f5a.jar" />
+        sha1="c4ba5371a29ac9b2ad6129b1d39ea38750043eff">
+        <dex dex="D:\MySimpleTweets\app\build\intermediates\pre-dexed\debug\gson-2.8.0_0bbb05cbc24e955f60787efa7cd958ed0a489fdd.jar" />
     </item>
     <item
         is-multidex="false"
@@ -261,6 +315,15 @@
         revision="24.0.1"
         sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
         <dex dex="D:\MySimpleTweets\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-24.2.1_58c8ea03cb3e559fb567c6baca8f83173d8f895f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MyPC\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="D:\MySimpleTweets\app\build\intermediates\pre-dexed\debug\support-annotations-24.2.1_54e9cccceda5d20684b644c76d822ab27e962f5a.jar" />
     </item>
     <item
         is-multidex="false"

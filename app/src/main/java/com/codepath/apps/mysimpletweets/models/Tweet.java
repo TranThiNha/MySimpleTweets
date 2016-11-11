@@ -27,6 +27,22 @@ import cz.msebera.android.httpclient.ParseException;
  */
 
 public class Tweet implements Serializable {
+
+
+    @SerializedName("retweeted")
+    private boolean retweeted;
+
+    public boolean isRetweeted() {
+        return retweeted;
+    }
+
+    public boolean isFavourited() {
+        return favourited;
+    }
+
+    @SerializedName("favorited")
+    private boolean favourited;
+
     //list out the attributes
     @SerializedName("text")
     String body;
@@ -42,9 +58,19 @@ public class Tweet implements Serializable {
     @SerializedName("retweet_count")
     int retweetCount;
 
+    @SerializedName("favorite_count")
+    int favouritesCount;
+
+
     @SerializedName("created_at")
     String createAt;
 
+    @SerializedName("user")
+    private User user;
+
+    public int getFavouritesCount() {
+        return favouritesCount;
+    }
 
     String relativeTimestamp;
 
@@ -72,7 +98,6 @@ public class Tweet implements Serializable {
         return relativeTimestamp;
     }
 
-    private User user;
     public String getBody() {
         return body;
     }

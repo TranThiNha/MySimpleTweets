@@ -34,19 +34,22 @@ public class User implements Serializable {
     @SerializedName("followers_count")
     int followersCount;
 
-    //@SerializedName("following")
-    //int following;
 
     @SerializedName("status")
     JsonObject status;
+
+    @SerializedName("statuses_count")
+    int statusesCount;
+
+    public int getStatusesCount(){
+        return statusesCount;
+    }
 
     public int getFollowersCount() {
         return followersCount;
     }
 
-   // public int getFollowing() {
-     //   return following;
-    //}
+
     public int getRetweetCount(){
         Gson gson = new Gson();
         int retweetCount = Integer.valueOf(status.get("retweet_count").toString());

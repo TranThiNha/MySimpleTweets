@@ -32,15 +32,14 @@ public class TwitterClient extends OAuthBaseClient {
 	 *    i.e client.get(apiUrl, params, handler);
 	 *    i.e client.post(apiUrl, params, handler);
 	 */
-	public void getHomeTimeline(int page , AsyncHttpResponseHandler handler) {
+
+	public void getHomeTimeline(int page, AsyncHttpResponseHandler handler) {
 		String apiUrl = getApiUrl("statuses/home_timeline.json");
 		RequestParams params = new RequestParams();
-		params.put("count", "25");
-		params.put("page",page);
-		params.put("since_id","1");
+		params.put("page", page);
+		params.put("since_id", "1");
 		getClient().get(apiUrl, params, handler);
 	}
-
 	//COMPOSE TWEET
 
 	public void postTweet(String body, AsyncHttpResponseHandler handler) {
@@ -50,6 +49,21 @@ public class TwitterClient extends OAuthBaseClient {
 		getClient().post(apiUrl, params, handler);
 	}
 
+	public void retweetStatus(long statusId, AsyncHttpResponseHandler handler)
+	{
+		String apiUrl = getApiUrl("statuses/retweet/" + statusId + ".json");
+		RequestParams params = new RequestParams();
+		params.put("id",statusId);
+		getClient().post(apiUrl,params,handler);
+	}
+
+	public void unRetweetStatus(long statusId, AsyncHttpResponseHandler handler)
+	{
+		String apiUrl = getApiUrl("statuses/unretweet/" + statusId + ".json");
+		RequestParams params = new RequestParams();
+		params.put("id",statusId);
+		getClient().post(apiUrl,params,handler);
+	}
 	public void getReTweet(long id, AsyncHttpResponseHandler handler){
 		String apiUrl = getApiUrl("statuses/retweet/" + String.valueOf(id)+".json");
 		RequestParams params = new RequestParams();
@@ -57,18 +71,27 @@ public class TwitterClient extends OAuthBaseClient {
 		getClient().post(apiUrl, params, handler);
 	}
 
-	public void updateLike(String body,int favouritesCount, AsyncHttpResponseHandler handler){
-		String apiUrl = getApiUrl("statuses/update.json");
+	public void favouriteStatus(long statusId, AsyncHttpResponseHandler handler)
+	{
+		String apiUrl = getApiUrl("favorites/create.json");
 		RequestParams params = new RequestParams();
-		params.put("status",body);
-		params.put("favourites_count",String.valueOf(favouritesCount));
-		getClient().post(apiUrl, params,handler);
+		params.put("id", statusId);
+		getClient().post(apiUrl, params, handler);
 	}
 
-	public void updateReply(String body, long id, AsyncHttpResponseHandler handler){
+	public void unFavouriteStatus(long statusId, AsyncHttpResponseHandler handler)
+	{
+		String apiUrl = getApiUrl("favorites/destroy.json");
+		RequestParams params = new RequestParams();
+		params.put("id", statusId);
+		getClient().post(apiUrl, params, handler);
+	}
+
+
+
+	public void updateReply(long id, AsyncHttpResponseHandler handler){
 		String apiUrl = getApiUrl("statuses/update.json");
 		RequestParams params = new RequestParams();
-		params.put("status",body);
 		params.put("in_reply_to_status_id",id);
 		getClient().post(apiUrl,params,handler);
 	}

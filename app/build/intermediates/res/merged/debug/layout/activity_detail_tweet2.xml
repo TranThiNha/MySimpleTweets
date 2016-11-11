@@ -88,20 +88,20 @@
             android:layout_height="@dimen/size_icon"
             android:background="@drawable/ic_reply"
             android:id="@+id/btnDetailReply"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="40dp"
             />
 
         <ImageButton
             android:layout_width="@dimen/size_icon"
             android:layout_height="@dimen/size_icon"
-            android:layout_marginLeft="35dp"
+            android:layout_marginLeft="40dp"
             android:id="@+id/btnDetailRetweet"
             android:background="@drawable/ic_retweet"/>
 
         <ImageButton
             android:layout_width="@dimen/size_icon"
             android:layout_height="@dimen/size_icon"
-            android:layout_marginLeft="35dp"
+            android:layout_marginLeft="50dp"
             android:id="@+id/btnDetailLike"
             android:background="@drawable/ic_like"/>
 

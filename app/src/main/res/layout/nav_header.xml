@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/hearlayout"
+    android:background="#4DB6AC">
+
+    <ImageView
+        android:layout_marginTop="35dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_connect"
+        android:layout_gravity="center"
+        android:id="@+id/ibImage"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Tran Thi Nha"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:id="@+id/tvName"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/tvMail"
+        android:text="'@'tranthinha160296"/>
+</LinearLayout>
