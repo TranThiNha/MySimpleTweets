@@ -46,6 +46,14 @@
         android:id="@+id/tvBody"/>
 
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_profile"
+
+        android:id="@+id/ivMedi"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

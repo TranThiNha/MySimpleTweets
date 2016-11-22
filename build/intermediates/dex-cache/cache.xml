@@ -309,21 +309,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="D:\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.1"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="D:\MySimpleTweets\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-24.2.1_58c8ea03cb3e559fb567c6baca8f83173d8f895f.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="C:\Users\MyPC\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
         jumboMode="false"
         optimize="true"
         revision="24.0.1"
         sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
         <dex dex="D:\MySimpleTweets\app\build\intermediates\pre-dexed\debug\support-annotations-24.2.1_54e9cccceda5d20684b644c76d822ab27e962f5a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="D:\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.1"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="D:\MySimpleTweets\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-24.2.1_58c8ea03cb3e559fb567c6baca8f83173d8f895f.jar" />
     </item>
     <item
         is-multidex="false"

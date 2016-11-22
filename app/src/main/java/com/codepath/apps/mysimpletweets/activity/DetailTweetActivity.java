@@ -19,6 +19,7 @@ import com.codepath.apps.mysimpletweets.adapter.TweetsArrayAdapter;
 import com.codepath.apps.mysimpletweets.models.Tweet;
 import com.codepath.apps.mysimpletweets.models.TwitterApplication;
 import com.codepath.apps.mysimpletweets.models.TwitterClient;
+import com.codepath.apps.mysimpletweets.models.User;
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -38,6 +39,7 @@ public class DetailTweetActivity extends AppCompatActivity {
     private ImageButton btnRetweet;
     private ImageButton btnLike;
     private TwitterClient mClient;
+    private ImageView ivMedia;
     private long id;
     boolean isFavourited, isRetweeted;
     Tweet tweet;
@@ -64,6 +66,7 @@ public class DetailTweetActivity extends AppCompatActivity {
                 replyDialog.shoDialog(DetailTweetActivity.this);
             }
         });
+
 
         btnRetweet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,14 +142,14 @@ public class DetailTweetActivity extends AppCompatActivity {
         btnRetweet = (ImageButton) findViewById(R.id.btnDetailRetweet);
         btnLike = (ImageButton) findViewById(R.id.btnDetailLike);
         btnReply = (ImageButton) findViewById(R.id.btnDetailLike);
+        ivMedia = (ImageView) findViewById(R.id.ivMedi);
 
     }
 
     public void setData()
     {
-
         Intent intent = getIntent();
-        String imageUrl, username, timeStamp, body;
+        final String imageUrl, username, timeStamp, body, media;
         int like, retweet;
         id = intent.getLongExtra("id",0);
         imageUrl = intent.getStringExtra("profileImage");
@@ -157,6 +160,13 @@ public class DetailTweetActivity extends AppCompatActivity {
         retweet = intent.getIntExtra("retweet",0);
         isFavourited = intent.getBooleanExtra("liked",false);
         isRetweeted = intent.getBooleanExtra("retweeted",false);
+        media = intent.getStringExtra("media");
+
+        if (media != ""){
+            Glide.with(ivMedia.getContext())
+                    .load(media)
+                    .into(ivMedia);
+        }
         Glide.with(getApplicationContext())
                 .load(imageUrl)
                 .into(ivProfileImage);
@@ -179,5 +189,23 @@ public class DetailTweetActivity extends AppCompatActivity {
         else {
             btnRetweet.setImageResource(R.drawable.ic_retweet);
         }
+
+        ivProfileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mClient.getAccount(id,username,new JsonHttpResponseHandler(){
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        super.onSuccess(statusCode, headers, response);
+                        Gson gson = new Gson();
+                        User user = gson.fromJson(response.toString(), User.class);
+                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                        intent.putExtra("id",user.getUid());
+                        intent.putExtra("name",user.getScreenName());
+                        startActivity(intent);
+                    }
+                });
+            }
+        });
     }
 }

@@ -1,40 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v4.widget.DrawerLayout
+<android.support.v4.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawer_layout"
+    android:layout_marginTop="55dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:id="@+id/swipeContainer"
+    android:layout_height="match_parent"
+    >
+    <android.support.v7.widget.RecyclerView
+    android:id="@+id/rvResult"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+    <ProgressBar
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="10dp"
+        android:visibility="visible"
+        android:id="@+id/pdMoreLoading"
+        />
+</android.support.v4.widget.SwipeRefreshLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <!-- The ActionBar displayed at the top -->
-        <include
-            layout="@layout/child_drawer"
-            android:id="@+id/chidDrawer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <!-- The main content view where fragments are loaded -->
-        <FrameLayout
-            android:id="@+id/flContent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-
-
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nvView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="@android:color/white"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/drawer_view" >
-    </android.support.design.widget.NavigationView>
-
-</android.support.v4.widget.DrawerLayout>

@@ -1,35 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
 
-<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main_content"
-    android:background="#FAFAFA">
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar_layout"
+   >
+    <include
+        layout="@layout/child_drawer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:theme="@style/ThemeOverlay.AppCompat">
-        <include
-            layout="@layout/toolbar"
-            android:id="@+id/toolbar"
-            />
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tablayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/googleBlue">
-        </android.support.design.widget.TabLayout>
+        android:layout_height="match_parent"  />
 
 
-    </android.support.design.widget.AppBarLayout>
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
-        android:layout_marginTop="90dp"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"/>
-</android.support.design.widget.CoordinatorLayout>
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nvView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@android:color/white"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/drawer_view" >
+    </android.support.design.widget.NavigationView>
+</android.support.v4.widget.DrawerLayout>
 

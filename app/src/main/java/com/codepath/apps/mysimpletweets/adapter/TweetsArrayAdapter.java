@@ -2,7 +2,9 @@ package com.codepath.apps.mysimpletweets.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.support.v4.app.FragmentManager;
@@ -22,11 +24,13 @@ import com.bumptech.glide.Glide;
 import com.codepath.apps.mysimpletweets.PostNewTweetDialog;
 import com.codepath.apps.mysimpletweets.R;
 import com.codepath.apps.mysimpletweets.ReplyDialog;
+import com.codepath.apps.mysimpletweets.activity.ProfileActivity;
 import com.codepath.apps.mysimpletweets.activity.TimelineActivity;
 import com.codepath.apps.mysimpletweets.models.Media;
 import com.codepath.apps.mysimpletweets.models.Tweet;
 import com.codepath.apps.mysimpletweets.models.TwitterApplication;
 import com.codepath.apps.mysimpletweets.models.TwitterClient;
+import com.codepath.apps.mysimpletweets.models.User;
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -45,15 +49,20 @@ public class TweetsArrayAdapter extends RecyclerView.Adapter<TweetsArrayAdapter.
 
     List<Tweet> mTweets;
     private ListClickListener mListClickListener;
+    private ProfileImageClickListener profileImageClickListener;
     private ReplyListener mReplyListener;
     public static boolean btnLikeClicked = false;
     public static boolean btnRetweetClicked = false;
     private Gson mGson;
+    Context mContext;
 
     public interface ListClickListener {
         void onItemClick(Tweet tweet);
     }
 
+    public  interface ProfileImageClickListener{
+        void onProfileImageClick(Tweet tweet);
+    }
     public interface ReplyListener{
         void onReplyListener(Tweet tweet);
     }
@@ -62,11 +71,16 @@ public class TweetsArrayAdapter extends RecyclerView.Adapter<TweetsArrayAdapter.
         mListClickListener = listClickListener;
     }
 
+    public void setOnProfileImageClickListener(ProfileImageClickListener listener){
+        profileImageClickListener = listener;
+    }
+
     public void setReplyListener(ReplyListener replyLisntener){
         mReplyListener = replyLisntener;
     }
-    public TweetsArrayAdapter()
+    public TweetsArrayAdapter(Context context)
     {
+        mContext = context;
         mTweets = new ArrayList<>();
     }
 
@@ -104,7 +118,7 @@ public class TweetsArrayAdapter extends RecyclerView.Adapter<TweetsArrayAdapter.
     public TweetViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_tweet, parent, false);
-        return new TweetViewHolder(itemView);
+        return new TweetViewHolder(itemView, mContext);
     }
 
     @Override
@@ -167,11 +181,13 @@ public class TweetsArrayAdapter extends RecyclerView.Adapter<TweetsArrayAdapter.
         LinearLayout linearLayout;
         TwitterClient mClient;
         ImageView ivMedia;
+        Context mContext;
 
 
-        public TweetViewHolder( View itemView) {
+        public TweetViewHolder(final View itemView, Context context) {
             super(itemView);
-             ivProfileImage= (ImageView)itemView.findViewById(R.id.ivProfileImage);
+            mContext = context;
+             ivProfileImage= (ImageView) itemView.findViewById(R.id.ivProfileImage);
             tvUserName= (TextView) itemView.findViewById(R.id.tvUserName);
             tvBody = (TextView)itemView.findViewById(R.id.tvBody);
             tvRelativeTimestamp = (TextView)itemView.findViewById(R.id.tvRelativeTimestamp);
@@ -190,7 +206,21 @@ public class TweetsArrayAdapter extends RecyclerView.Adapter<TweetsArrayAdapter.
                     int position = getAdapterPosition();
                     Tweet tweet = mTweets.get(position);
                     if (mListClickListener != null)
+                    {
                         mListClickListener.onItemClick(tweet);
+                    }
+
+                }
+            });
+
+            ivProfileImage.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    Tweet tweet = mTweets.get(position);
+                    profileImageClickListener.onProfileImageClick(tweet);
+
                 }
             });
 
@@ -199,7 +229,6 @@ public class TweetsArrayAdapter extends RecyclerView.Adapter<TweetsArrayAdapter.
                 public void onClick(View view) {
                     int position = getAdapterPosition();
                     Tweet tweet = mTweets.get(position);
-
                     mReplyListener.onReplyListener(tweet);
                 }
             });

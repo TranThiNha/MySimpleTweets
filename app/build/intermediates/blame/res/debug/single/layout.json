@@ -52,12 +52,12 @@
         "source": "D:\\MySimpleTweets\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\abc_popup_menu_item_layout.xml"
     },
     {
-        "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_action.xml",
-        "source": "D:\\MySimpleTweets\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\notification_media_action.xml"
-    },
-    {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
         "source": "D:\\MySimpleTweets\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_action.xml",
+        "source": "D:\\MySimpleTweets\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\notification_media_action.xml"
     },
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
@@ -102,6 +102,10 @@
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
         "source": "D:\\MySimpleTweets\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_favourite_destination.xml",
+        "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\layout\\item_favourite_destination.xml"
     },
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\child_drawer.xml",
@@ -206,6 +210,10 @@
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\toolbar.xml",
         "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\layout\\toolbar.xml"
+    },
+    {
+        "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_favourite_destination.xml",
+        "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\layout\\activity_favourite_destination.xml"
     },
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
