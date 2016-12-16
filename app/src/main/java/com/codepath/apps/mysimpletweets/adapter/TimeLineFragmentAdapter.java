@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.codepath.apps.mysimpletweets.Fragment.ChatFragment;
 import com.codepath.apps.mysimpletweets.Fragment.FavouriteDestinationFragment;
 import com.codepath.apps.mysimpletweets.Fragment.TimeLineFragment;
 
@@ -22,7 +23,7 @@ public class TimeLineFragmentAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:return TimeLineFragment.newInstance();
-            case 1: return FavouriteDestinationFragment.newInstance();
+            case 1: return ChatFragment.newInstance();
         }
         return null;
     }

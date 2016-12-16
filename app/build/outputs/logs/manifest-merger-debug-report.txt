@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\MySimpleTweets\app\src\main\AndroidManifest.xml:2:1-46:12
+ADDED from D:\MySimpleTweets\app\src\main\AndroidManifest.xml:2:1-48:12
 	package
 		ADDED from D:\MySimpleTweets\app\src\main\AndroidManifest.xml:3:5-47
 		INJECTED from D:\MySimpleTweets\app\src\main\AndroidManifest.xml
@@ -24,7 +24,7 @@ ADDED from D:\MySimpleTweets\app\src\main\AndroidManifest.xml:8:5-81
 	android:name
 		ADDED from D:\MySimpleTweets\app\src\main\AndroidManifest.xml:8:22-78
 application
-ADDED from D:\MySimpleTweets\app\src\main\AndroidManifest.xml:10:5-44:19
+ADDED from D:\MySimpleTweets\app\src\main\AndroidManifest.xml:10:5-46:19
 MERGED from [com.github.Raizlabs.DBFlow:dbflow:3.1.1] D:\MySimpleTweets\app\build\intermediates\exploded-aar\com.github.Raizlabs.DBFlow\dbflow\3.1.1\AndroidManifest.xml:11:5-20
 MERGED from [com.android.support:design:24.2.1] D:\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\design\24.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:appcompat-v7:24.2.1] D:\MySimpleTweets\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\AndroidManifest.xml:25:5-20
@@ -107,6 +107,14 @@ activity#com.codepath.apps.mysimpletweets.activity.MainActivity
 ADDED from D:\MySimpleTweets\app\src\main\AndroidManifest.xml:43:9-68
 	android:name
 		ADDED from D:\MySimpleTweets\app\src\main\AndroidManifest.xml:43:19-56
+activity#com.codepath.apps.mysimpletweets.activity.FollowerListActivity
+ADDED from D:\MySimpleTweets\app\src\main\AndroidManifest.xml:44:9-66
+	android:name
+		ADDED from D:\MySimpleTweets\app\src\main\AndroidManifest.xml:44:19-64
+activity#com.codepath.apps.mysimpletweets.activity.ChangeProfileActivity
+ADDED from D:\MySimpleTweets\app\src\main\AndroidManifest.xml:45:9-67
+	android:name
+		ADDED from D:\MySimpleTweets\app\src\main\AndroidManifest.xml:45:19-65
 uses-sdk
 INJECTED from D:\MySimpleTweets\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.codepath.libraries:android-oauth-handler:1.1.0] D:\MySimpleTweets\app\build\intermediates\exploded-aar\com.codepath.libraries\android-oauth-handler\1.1.0\AndroidManifest.xml:7:5-9:41

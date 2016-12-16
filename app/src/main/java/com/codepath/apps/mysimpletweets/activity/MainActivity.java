@@ -12,8 +12,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,11 +22,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.codepath.apps.mysimpletweets.DividerItemDecoration;
-import com.codepath.apps.mysimpletweets.Fragment.FavouriteDesGridFragment;
-import com.codepath.apps.mysimpletweets.Fragment.FavouriteDestinationFragment;
 import com.codepath.apps.mysimpletweets.Fragment.MainFragment;
-import com.codepath.apps.mysimpletweets.PostNewTweetDialog;
+import com.codepath.apps.mysimpletweets.Dialog.PostNewTweetDialog;
 import com.codepath.apps.mysimpletweets.R;
 import com.codepath.apps.mysimpletweets.adapter.TimeLineFragmentAdapter;
 import com.codepath.apps.mysimpletweets.models.TwitterApplication;
@@ -59,6 +56,11 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnLi
     TextView tvMail;
     private TwitterClient client;
 
+    // ý e dang chạy tren dt
+    // có vysor ko?a cho e chut :p
+    // khoan
+    // activity nào bị?cai này luon nek a
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnLi
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         client = TwitterApplication.getRestClient();
-
         nvDrawer = (NavigationView) findViewById(R.id.nvView);
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         headerLayout = nvDrawer.getHeaderView(0);
@@ -85,7 +86,6 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnLi
 
         setSupportActionBar(toolbar);
         setHeaderData(client);
-
     }
     private void setHeaderData(TwitterClient _client){
         _client = TwitterApplication.getRestClient();
@@ -249,6 +249,16 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnLi
                 fragment = new FavouriteDesGridFragment();
                 break;
         }*/
+
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK)
+        {
+            finish();
+        }
+            return super.onKeyDown(keyCode, event);
 
     }
 }

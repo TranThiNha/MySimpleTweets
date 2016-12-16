@@ -16,6 +16,20 @@ import java.util.List;
  */
 public class User implements Serializable {
     //list attributea
+    @SerializedName("description")
+    String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    @SerializedName("following")
+    boolean followRequestSent;
+
+    public boolean getFollowRequestSent() {
+        return followRequestSent;
+    }
+
     @SerializedName("name")
     private String name;
 
@@ -34,6 +48,19 @@ public class User implements Serializable {
     @SerializedName("followers_count")
     int followersCount;
 
+    @SerializedName("profile_background_image_url")
+    private String profileBackgroundImageUrl;
+
+    @SerializedName("profile_use_background_image")
+    private boolean profileUseBackgroundImage;
+
+    public boolean isProfileUseBackgroundImage() {
+        return profileUseBackgroundImage;
+    }
+
+    public String getProfileBackgroundImageUrl() {
+        return profileBackgroundImageUrl;
+    }
 
     @SerializedName("status")
     JsonObject status;

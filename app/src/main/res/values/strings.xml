@@ -7,5 +7,6 @@
     <string name="title_activity_timeline">Home Timeline</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+    <string name="load_more"><u>Load more..</u></string>
 
 </resources>

@@ -8,10 +8,6 @@
         "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\drawable-xxhdpi\\ic_edit.png"
     },
     {
-        "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_liked.png",
-        "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\drawable-xxhdpi\\ic_liked.png"
-    },
-    {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_launcher.png",
         "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\drawable-xxhdpi\\ic_launcher.png"
     },
@@ -58,10 +54,6 @@
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_list.png",
         "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\drawable-xxhdpi\\ic_list.png"
-    },
-    {
-        "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_like.png",
-        "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\drawable-xxhdpi\\ic_like.png"
     },
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_retweet.png",

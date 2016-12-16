@@ -36,8 +36,7 @@ public class TwitterClient extends OAuthBaseClient {
 	public void getHomeTimeline(int page, AsyncHttpResponseHandler handler) {
 		String apiUrl = getApiUrl("statuses/home_timeline.json");
 		RequestParams params = new RequestParams();
-		params.put("page", page);
-		params.put("since_id", "1");
+		params.put("page", String.valueOf(page));
 		getClient().get(apiUrl, params, handler);
 	}
 	//COMPOSE TWEET
@@ -107,4 +106,41 @@ public class TwitterClient extends OAuthBaseClient {
 		RequestParams params = new RequestParams();
 		getClient().get(apiUrl,params,handler);
 	}
+
+	public void getUserTweet(String screenName, int count, AsyncHttpResponseHandler handler){
+		String apiUrl = getApiUrl("statuses/user_timeline.json?screen_name="+screenName+"&count="+count);
+		RequestParams params = new RequestParams();
+		getClient().get(apiUrl,params,handler);
+	}
+
+	public void getChatList(AsyncHttpResponseHandler handler){
+		String apiUrl = getApiUrl("direct_messages.json?count=1");
+		RequestParams params = new RequestParams();
+		getClient().get(apiUrl,params,handler);
+	}
+
+	public void getFollwerList(String screenName, AsyncHttpResponseHandler handler){
+		String apiUrl = getApiUrl("followers/list.json?cursor=-1&screen_name="+screenName+"&skip_status=true&include_user_entities=false");
+		RequestParams params = new RequestParams();
+		getClient().get(apiUrl,params,handler);
+	}
+
+	public void createFollow(long id, AsyncHttpResponseHandler handler){
+		String apiUrl = getApiUrl("friendships/create.json?user_id="+id+"&follow=true");
+		RequestParams params = new RequestParams();
+		getClient().get(apiUrl,params,handler);
+	}
+
+	public void changeProfileImage(String url, AsyncHttpResponseHandler handler){
+		String apiUrl = getApiUrl("account/update_profile_image.json?image="+url);
+		RequestParams params = new RequestParams();
+		getClient().get(apiUrl,params,handler);
+	}
+
+	public void getFavouriteList(String name, int count, AsyncHttpResponseHandler handler){
+		String apiUrl = getApiUrl("favorites/list.json?count="+count+"&screen_name="+name);
+		RequestParams params = new RequestParams();
+		getClient().get(apiUrl, params, handler);
+	}
+
 }

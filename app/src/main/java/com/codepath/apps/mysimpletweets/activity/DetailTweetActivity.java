@@ -1,21 +1,17 @@
 package com.codepath.apps.mysimpletweets.activity;
 
 import android.content.Intent;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.codepath.apps.mysimpletweets.R;
-import com.codepath.apps.mysimpletweets.ReplyDialog;
-import com.codepath.apps.mysimpletweets.activity.TimelineActivity;
-import com.codepath.apps.mysimpletweets.adapter.TweetsArrayAdapter;
+import com.codepath.apps.mysimpletweets.Dialog.ReplyDialog;
 import com.codepath.apps.mysimpletweets.models.Tweet;
 import com.codepath.apps.mysimpletweets.models.TwitterApplication;
 import com.codepath.apps.mysimpletweets.models.TwitterClient;
@@ -126,7 +122,6 @@ public class DetailTweetActivity extends AppCompatActivity {
                             isFavourited= false;
                         }
                     });
-
                 }
             }
         });
@@ -167,10 +162,11 @@ public class DetailTweetActivity extends AppCompatActivity {
                     .load(media)
                     .into(ivMedia);
         }
+        else ivMedia.setVisibility(View.GONE);
+
         Glide.with(getApplicationContext())
                 .load(imageUrl)
                 .into(ivProfileImage);
-
         tvUserName.setText(username);
         tvTimeStamp.setText(timeStamp);
         tvBody.setText(body);
@@ -178,6 +174,7 @@ public class DetailTweetActivity extends AppCompatActivity {
         tvLike.setText(String.valueOf(like));
         if (isFavourited){
             btnLike.setImageResource(R.drawable.ic_liked);
+
         }
         else {
             btnLike.setImageResource(R.drawable.ic_like);

@@ -41,6 +41,8 @@
         <activity android:name=".activity.DetailTweetActivity"></activity>
         <activity android:name=".activity.ProfileActivity"></activity>
         <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.FollowerListActivity"/>
+        <activity android:name=".activity.ChangeProfileActivity"/>
     </application>
 
 </manifest>

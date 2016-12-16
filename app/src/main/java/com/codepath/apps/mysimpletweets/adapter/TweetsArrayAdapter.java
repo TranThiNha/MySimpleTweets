@@ -1,36 +1,21 @@
 package com.codepath.apps.mysimpletweets.adapter;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.provider.MediaStore;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.codepath.apps.mysimpletweets.PostNewTweetDialog;
 import com.codepath.apps.mysimpletweets.R;
-import com.codepath.apps.mysimpletweets.ReplyDialog;
-import com.codepath.apps.mysimpletweets.activity.ProfileActivity;
-import com.codepath.apps.mysimpletweets.activity.TimelineActivity;
 import com.codepath.apps.mysimpletweets.models.Media;
 import com.codepath.apps.mysimpletweets.models.Tweet;
 import com.codepath.apps.mysimpletweets.models.TwitterApplication;
 import com.codepath.apps.mysimpletweets.models.TwitterClient;
-import com.codepath.apps.mysimpletweets.models.User;
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -158,8 +143,8 @@ public class TweetsArrayAdapter extends RecyclerView.Adapter<TweetsArrayAdapter.
             Glide.with(holder.ivMedia.getContext())
                     .load(medias.get(0).getMediaUrl())
                     .into(holder.ivMedia);
-
         }
+        else holder.ivMedia.setVisibility(View.GONE);
 
     }
 

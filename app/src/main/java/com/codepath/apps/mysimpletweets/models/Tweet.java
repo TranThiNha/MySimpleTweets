@@ -68,6 +68,13 @@ public class Tweet implements Serializable {
     @SerializedName("user")
     private User user;
 
+    @SerializedName("url")
+    private String Url;
+
+    public String getUrl() {
+        return Url;
+    }
+
     public int getFavouritesCount() {
         return favouritesCount;
     }

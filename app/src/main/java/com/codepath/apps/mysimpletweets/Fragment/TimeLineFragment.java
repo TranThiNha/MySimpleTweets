@@ -12,9 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.codepath.apps.mysimpletweets.DividerItemDecoration;
+import com.codepath.apps.mysimpletweets.helper.DividerItemDecoration;
 import com.codepath.apps.mysimpletweets.R;
-import com.codepath.apps.mysimpletweets.ReplyDialog;
+import com.codepath.apps.mysimpletweets.Dialog.ReplyDialog;
 import com.codepath.apps.mysimpletweets.activity.DetailTweetActivity;
 import com.codepath.apps.mysimpletweets.activity.ProfileActivity;
 import com.codepath.apps.mysimpletweets.adapter.TweetsArrayAdapter;
@@ -27,9 +27,7 @@ import com.codepath.apps.mysimpletweets.models.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.loopj.android.http.JsonHttpResponseHandler;
-import com.raizlabs.android.dbflow.sql.language.Condition;
 
-import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -47,7 +45,7 @@ public class TimeLineFragment extends Fragment {
     private RecyclerView rvTweets;
     private ProgressBar pbMoreLoading;
     private LinearLayoutManager mLayoutManager;
-
+    static int page = 1;
     public TimeLineFragment() {
     }
 
@@ -80,7 +78,7 @@ public class TimeLineFragment extends Fragment {
             @Override
             public void onLoadMore(int page, int totalItemsCount) {
                 pbMoreLoading.setVisibility(View.VISIBLE);
-                populateTimelineLoadMore(page);
+                populateTimelineLoadMore(page+=1);
                 pbMoreLoading.setVisibility(View.GONE);
             }
         });
@@ -139,7 +137,7 @@ public class TimeLineFragment extends Fragment {
 
 
         //get the client
-        populateTimeline(1);
+        populateTimeline(page);
 
     }
 
@@ -170,7 +168,7 @@ public class TimeLineFragment extends Fragment {
 
 
     private void populateTimelineLoadMore(int page) {
-        client.getHomeTimeline(page,new JsonHttpResponseHandler(){
+        client.getHomeTimeline(page ,new JsonHttpResponseHandler(){
             //SUCCESS
 
             @Override
@@ -216,5 +214,4 @@ public class TimeLineFragment extends Fragment {
 
         boolean isFinishRefresh = false;
     }
-
 }

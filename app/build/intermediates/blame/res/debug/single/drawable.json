@@ -8,6 +8,10 @@
         "source": "D:\\MySimpleTweets\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\drawable\\abc_ic_menu_overflow_material.xml"
     },
     {
+        "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_like.xml",
+        "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\drawable\\ic_like.xml"
+    },
+    {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\navigation_empty_icon.xml",
         "source": "D:\\MySimpleTweets\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\res\\drawable\\navigation_empty_icon.xml"
     },
@@ -22,6 +26,14 @@
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_borderless_material.xml",
         "source": "D:\\MySimpleTweets\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\drawable\\abc_btn_borderless_material.xml"
+    },
+    {
+        "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_arrow_blue_black_24dp.xml",
+        "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\drawable\\ic_arrow_blue_black_24dp.xml"
+    },
+    {
+        "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cover.jpg",
+        "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\drawable\\cover.jpg"
     },
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\design_fab_background.xml",
@@ -68,6 +80,10 @@
         "source": "D:\\MySimpleTweets\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\drawable\\abc_item_background_holo_light.xml"
     },
     {
+        "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\borber_button.xml",
+        "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\drawable\\borber_button.xml"
+    },
+    {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\image.xml",
         "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\drawable\\image.xml"
     },
@@ -82,6 +98,10 @@
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml",
         "source": "D:\\MySimpleTweets\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
+    },
+    {
+        "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_person_add_black_24dp.xml",
+        "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\drawable\\ic_person_add_black_24dp.xml"
     },
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_tab_indicator_material.xml",
@@ -114,6 +134,10 @@
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_radio_material.xml",
         "source": "D:\\MySimpleTweets\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\drawable\\abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_add_a_photo_white_24dp.xml",
+        "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\drawable\\ic_add_a_photo_white_24dp.xml"
     },
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_light.xml",

@@ -45,6 +45,8 @@
         <activity android:name="com.codepath.apps.mysimpletweets.activity.DetailTweetActivity" />
         <activity android:name="com.codepath.apps.mysimpletweets.activity.ProfileActivity" />
         <activity android:name="com.codepath.apps.mysimpletweets.activity.MainActivity" />
+        <activity android:name="com.codepath.apps.mysimpletweets.activity.FollowerListActivity" />
+        <activity android:name="com.codepath.apps.mysimpletweets.activity.ChangeProfileActivity" />
     </application>
 
 </manifest>

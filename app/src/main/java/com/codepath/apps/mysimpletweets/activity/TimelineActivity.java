@@ -13,8 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.codepath.apps.mysimpletweets.PostNewTweetDialog;
-import com.codepath.apps.mysimpletweets.ReplyDialog;
+import com.codepath.apps.mysimpletweets.Dialog.PostNewTweetDialog;
+import com.codepath.apps.mysimpletweets.Dialog.ReplyDialog;
 import com.codepath.apps.mysimpletweets.models.EndlessRecyclerViewScrollListener;
 import com.codepath.apps.mysimpletweets.R;
 import com.codepath.apps.mysimpletweets.adapter.TweetsArrayAdapter;
@@ -40,7 +40,7 @@ public class TimelineActivity extends AppCompatActivity {
     private PostNewTweetDialog mPostNewTweetDialog;
     private LinearLayoutManager mLayoutManager;
     private SwipeRefreshLayout mSwipeContainer;
-
+    static int page = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +73,7 @@ public class TimelineActivity extends AppCompatActivity {
             @Override
             public void onLoadMore(int page, int totalItemsCount) {
                 pbMoreLoading.setVisibility(View.VISIBLE);
-                populateTimelineLoadMore(page);
+                populateTimelineLoadMore(page+=1);
                 pbMoreLoading.setVisibility(View.GONE);
             }
         });
@@ -108,8 +108,7 @@ public class TimelineActivity extends AppCompatActivity {
 
         //get the client
         client = TwitterApplication.getRestClient();
-        populateTimeline(1);
-
+        populateTimeline(page);
 
     }
 

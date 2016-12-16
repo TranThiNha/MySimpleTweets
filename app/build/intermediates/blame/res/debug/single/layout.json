@@ -28,6 +28,10 @@
         "source": "D:\\MySimpleTweets\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\select_dialog_item_material.xml"
     },
     {
+        "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_user.xml",
+        "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\layout\\item_user.xml"
+    },
+    {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
         "source": "D:\\MySimpleTweets\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\res\\layout\\design_navigation_item_header.xml"
     },
@@ -38,6 +42,10 @@
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
         "source": "D:\\MySimpleTweets\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_change_profile.xml",
+        "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\layout\\dialog_change_profile.xml"
     },
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
@@ -58,6 +66,10 @@
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_action.xml",
         "source": "D:\\MySimpleTweets\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\notification_media_action.xml"
+    },
+    {
+        "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_chat.xml",
+        "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\layout\\fragment_chat.xml"
     },
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
@@ -128,6 +140,10 @@
         "source": "D:\\MySimpleTweets\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\layout\\abc_activity_chooser_view.xml"
     },
     {
+        "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_chat.xml",
+        "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\layout\\item_chat.xml"
+    },
+    {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\avtivity_post_new_tweet.xml",
         "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\layout\\avtivity_post_new_tweet.xml"
     },
@@ -142,6 +158,10 @@
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_profile.xml",
         "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\layout\\activity_profile.xml"
+    },
+    {
+        "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_iamge.xml",
+        "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\layout\\dialog_iamge.xml"
     },
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
@@ -246,6 +266,10 @@
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_tweet.xml",
         "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\layout\\item_tweet.xml"
+    },
+    {
+        "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_user.xml",
+        "source": "D:\\MySimpleTweets\\app\\src\\main\\res\\layout\\activity_user.xml"
     },
     {
         "merged": "D:\\MySimpleTweets\\app\\build\\intermediates\\res\\merged\\debug\\layout\\nav_header.xml",
