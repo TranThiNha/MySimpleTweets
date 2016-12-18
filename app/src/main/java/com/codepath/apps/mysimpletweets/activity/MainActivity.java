@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnLi
         // switch (item.getItemId()){
         //   case R.id.menu_action_profile:-
         Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+        intent.putExtra("id",1);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         //fragmentClass = Profile.class;

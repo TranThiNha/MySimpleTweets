@@ -1,6 +1,10 @@
 package com.codepath.apps.mysimpletweets.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,12 +15,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.codepath.apps.mysimpletweets.DBHelper.DBHelper;
 import com.codepath.apps.mysimpletweets.R;
 import com.codepath.apps.mysimpletweets.activity.DetailTweetActivity;
 import com.codepath.apps.mysimpletweets.activity.ProfileActivity;
 import com.codepath.apps.mysimpletweets.adapter.ProfileTablayoutAdapter;
 import com.codepath.apps.mysimpletweets.adapter.TweetsArrayAdapter;
 import com.codepath.apps.mysimpletweets.helper.DividerItemDecoration;
+import com.codepath.apps.mysimpletweets.models.EndlessRecyclerViewScrollListener;
 import com.codepath.apps.mysimpletweets.models.Media;
 import com.codepath.apps.mysimpletweets.models.Tweet;
 import com.codepath.apps.mysimpletweets.models.TwitterApplication;
@@ -39,11 +45,13 @@ import cz.msebera.android.httpclient.Header;
 public class UserTweetFragment extends Fragment {
 
     private String mScreenName;
-    private int count = 2;
+    private int mPage = 0;
     private RecyclerView rvTweets;
     LinearLayoutManager mLayoutmanager;
     TweetsArrayAdapter mAdapter;
     TwitterClient mClient;
+    private DBHelper mDBHelper;
+    private SQLiteDatabase mDatabase;
 
 
     public static UserTweetFragment newInstance(){
@@ -59,6 +67,8 @@ public class UserTweetFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.activity_timeline,container,false);
         mScreenName = ProfileActivity.mScreenName;
         rvTweets = (RecyclerView) rootView.findViewById(R.id.rvResult);
+        mDBHelper = new DBHelper(getContext());
+        mDatabase = mDBHelper.getReadableDatabase();
         return rootView;
     }
 
@@ -68,30 +78,46 @@ public class UserTweetFragment extends Fragment {
         mClient = TwitterApplication.getRestClient();
         mLayoutmanager = new LinearLayoutManager(getContext());
         mAdapter = new TweetsArrayAdapter(getContext());
+        if(!isNetworkAvailable()){
+            mAdapter.setTweet(mDBHelper.parseTweets(mDBHelper.getTweetsData(mScreenName),mScreenName));
+        }
+        else {
+            //mDBHelper.deleteTweets(mScreenName);
+        }
+        load(mPage);
         rvTweets.setLayoutManager(mLayoutmanager);
         rvTweets.setAdapter(mAdapter);
         RecyclerView.ItemDecoration decoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST);
         rvTweets.addItemDecoration(decoration);
-        mAdapter.setTweet(ProfileActivity.mTweetList);
         setListener();
+        rvTweets.addOnScrollListener(new EndlessRecyclerViewScrollListener(mLayoutmanager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount) {
+                load(mPage += 1);
+            }
+        });
     }
 
-    /*void setUp(){
-        mClient.getUserTweet(mScreenName, count, new JsonHttpResponseHandler(){
+    void load(int page){
+        mClient.getUserTweet(mScreenName, page, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray json) {
                 Gson gson = new Gson();
                 List<Tweet> mTweetList = gson.fromJson(json.toString(), new TypeToken<List<Tweet>>(){}.getType() );
+                for (int  i= 0; i< mTweetList.size();i++){
+                    mDBHelper.insertTweets(mTweetList.get(i),mScreenName);
+                }
                 mAdapter.setTweet(mTweetList);
+
             }
         });
-    }*/
+    }
 
     void setListener(){
         mAdapter.setOnProfileImageClickListener(new TweetsArrayAdapter.ProfileImageClickListener() {
             @Override
             public void onProfileImageClick(Tweet tweet) {
-                mClient.getAccount(tweet.getUser().getUid(), tweet.getUser().getScreenName(),new JsonHttpResponseHandler(){
+                mClient.getAccount(tweet.getUserId(), tweet.getUserScreenName(),new JsonHttpResponseHandler(){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         super.onSuccess(statusCode, headers, response);
@@ -111,17 +137,16 @@ public class UserTweetFragment extends Fragment {
             public void onItemClick(Tweet tweet)
             {
                 Intent intent = new Intent(getContext(), DetailTweetActivity.class);
-
                 List<Media> medias = tweet.getMedias();
-                if(medias!=null && medias.size() > 0)
+                if(tweet.getMediaUrl()!=null)
                 {
-                    intent.putExtra("media",tweet.getMedias().get(0).getMediaUrl());
+                    intent.putExtra("media",tweet.getMediaUrl());
                 }
                 else
                     intent.putExtra("media","");
                 intent.putExtra("id",tweet.getUid());
-                intent.putExtra("profileImage",tweet.getUser().getProfileImageUrl());
-                intent.putExtra("userName",tweet.getUser().getScreenName());
+                intent.putExtra("profileImage",tweet.getAvatarUrl());
+                intent.putExtra("userName",tweet.getUserScreenName());
                 intent.putExtra("timeStamp",tweet.getRelativeTimestamp());
                 intent.putExtra("body",tweet.getBody());
                 intent.putExtra("retweet",tweet.getRetweetCount());
@@ -131,5 +156,10 @@ public class UserTweetFragment extends Fragment {
                 startActivity(intent);
             }
         });
+    }
+    private Boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
     }
 }

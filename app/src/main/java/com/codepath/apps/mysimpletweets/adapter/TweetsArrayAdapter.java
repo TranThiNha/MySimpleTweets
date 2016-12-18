@@ -110,14 +110,14 @@ public class TweetsArrayAdapter extends RecyclerView.Adapter<TweetsArrayAdapter.
     public void onBindViewHolder(TweetViewHolder holder, int position)
     {
         final Tweet tweet = mTweets.get(position);
-
-        holder.tvUserName.setText(tweet.getUser().getScreenName());
+        tweet.getUser();
+        tweet.getMedias();
+        tweet.getRelativeTimeAgo(tweet.getCreateAt());
+        holder.tvUserName.setText(tweet.getUserScreenName());
         holder.tvBody.setText(tweet.getBody());
         holder.ivProfileImage.setImageResource(android.R.color.transparent);
-        holder.tvRelativeTimestamp.setText(tweet.getRelativeTimeAgo(tweet.getCreateAt()));
-
+        holder.tvRelativeTimestamp.setText(tweet._getRelativeTimeAgo());
         holder.tvRetweet.setText(String.valueOf(tweet.getRetweetCount()));
-
         holder.tvFavorite.setText(String.valueOf(tweet.getFavouritesCount()));
 
         if(tweet.isFavourited()){
@@ -134,14 +134,14 @@ public class TweetsArrayAdapter extends RecyclerView.Adapter<TweetsArrayAdapter.
             holder.btnRetweet.setImageResource(R.drawable.ic_retweet);
         }
 
-        Glide.with(holder.ivProfileImage.getContext())
-                .load(tweet.getUser().getProfileImageUrl())
+       Glide.with(holder.ivProfileImage.getContext())
+                .load(tweet.getAvatarUrl())
                 .into(holder.ivProfileImage);
         List<Media> medias = tweet.getMedias();
-        if (medias!= null && medias.size()>0){
+        if (tweet.getMediaUrl()!=null){
             holder.ivMedia.setVisibility(View.VISIBLE);
             Glide.with(holder.ivMedia.getContext())
-                    .load(medias.get(0).getMediaUrl())
+                    .load(tweet.getMediaUrl())
                     .into(holder.ivMedia);
         }
         else holder.ivMedia.setVisibility(View.GONE);
@@ -224,6 +224,7 @@ public class TweetsArrayAdapter extends RecyclerView.Adapter<TweetsArrayAdapter.
                     final int position = getAdapterPosition();
                     final Tweet tweet = mTweets.get(position);
                     if (!tweet.isFavourited()){
+                        long  id = tweet.getUid();
                         mClient.favouriteStatus(tweet.getUid(),new JsonHttpResponseHandler(){
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

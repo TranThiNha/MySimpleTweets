@@ -127,8 +127,9 @@
     </android.support.design.widget.TabLayout>
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/pagerProfile">
+        android:layout_height="256dp"
+        android:id="@+id/pagerProfile"
+        android:background="#E0F7FA">
 
     </android.support.v4.view.ViewPager>
 </LinearLayout>

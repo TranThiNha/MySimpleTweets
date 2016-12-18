@@ -1,7 +1,11 @@
 package com.codepath.apps.mysimpletweets.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -14,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.codepath.apps.mysimpletweets.DBHelper.DBHelper;
 import com.codepath.apps.mysimpletweets.adapter.ProfileTablayoutAdapter;
 import com.codepath.apps.mysimpletweets.R;
 import com.codepath.apps.mysimpletweets.Dialog.ShowImageDialog;
@@ -42,6 +47,8 @@ public class ProfileActivity extends AppCompatActivity {
     public static String KEY_COVER ="cover";
     public static String KEY_ID="id";
     public static  String KEY_SCREENNAME ="screenName";
+    private DBHelper mDbHelper;
+    private SQLiteDatabase mDatabase;
     ImageView ivImage;
     ImageView ivCover;
     TextView tvName;
@@ -105,99 +112,48 @@ public class ProfileActivity extends AppCompatActivity {
         id = intent.getLongExtra("id",0);
         name = intent.getStringExtra("name");
         if (id !=0){
-            mClient.getAccount(id,name,new JsonHttpResponseHandler(){
+            mDbHelper = new DBHelper(getApplicationContext());
+            mDatabase = mDbHelper.getReadableDatabase();
+            if(isNetworkAvailable())
+            {
+                mClient.getAccount(id,name,new JsonHttpResponseHandler(){
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     super.onSuccess(statusCode, headers, response);
                     Gson gson = new Gson();
                     User user1 = gson.fromJson(response.toString(),User.class);
-                    avatarImage = user1.getProfileImageUrl();
-                    coverImage = user1.getProfileBackgroundImageUrl();
-                    mId = user1.getUid();
                     mScreenName = user1.getScreenName();
-                    getUserTweet();
-                    getFavourite();
-                    mAdapter = new ProfileTablayoutAdapter(getSupportFragmentManager());
-                    mViewPager.setAdapter(mAdapter);
-                    mTablayout.setupWithViewPager(mViewPager);
-                    btnChangeProfile.setVisibility(View.GONE);
-                    if (user1.getFollowRequestSent()){
-                        btnFriend.setText("FOLLOWED");
+                    setDataAccount(user1);
                     }
-                    else {
-                        btnFriend.setText("FOLLOW");
-                    }
-                    btnFriend.setVisibility(View.VISIBLE);
-                    Glide.with(ivImage.getContext())
-                            .load(user1.getProfileImageUrl())
-                            .into(ivImage);
-                    tvName.setText(user1.getName());
-                    tvMail.setText("@"+user1.getScreenName());
-                    tvNumberTweet.setText(String.valueOf(user1.getStatusesCount()));
-                    tvNumberFollow.setText(String.valueOf(user1.getFavouritesCount()));
-                    tvNumberFollower.setText(String.valueOf(user1.getFollowersCount()));
-                    if (user1.isProfileUseBackgroundImage()){
-                        Glide.with(ivCover.getContext())
-                                .load(coverImage)
-                                .into(ivCover);
-                    }
-                    btnChangeProfile.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent1 = new Intent(getApplicationContext(),ChangeProfileActivity.class);
-                            intent1.putExtra(KEY_AVARTAR,avatarImage);
-                            intent1.putExtra(KEY_COVER,coverImage);
-                            startActivity(intent1);
-                        }
-                    });
-                }
-            });
+                });
+            }else {
+                mScreenName = name;
+                User user = mDbHelper.parseAccount(mDbHelper.getAccountData(id),mScreenName);
+                if (user!=null)
+                    setDataAccount(user);
+            }
         }
 
         else {
-            mClient.getProfile(new JsonHttpResponseHandler() {
-                @Override
-                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                    super.onSuccess(statusCode, headers, response);
-                    Gson gson = new Gson();
-                    User user = gson.fromJson(response.toString(), User.class);
-                    avatarImage = user.getProfileImageUrl();
-                    coverImage = user.getProfileBackgroundImageUrl();
-                    mId = user.getUid();
-                    mScreenName = user.getScreenName();
-                    getUserTweet();
-                    getFavourite();
-                    mAdapter = new ProfileTablayoutAdapter(getSupportFragmentManager());
-                    mViewPager.setAdapter(mAdapter);
-                    mTablayout.setupWithViewPager(mViewPager);
-                    btnChangeProfile.setVisibility(View.VISIBLE);
-                    btnFriend.setVisibility(View.GONE);
-                    Glide.with(ivImage.getContext())
-                            .load(user.getProfileImageUrl())
-                            .into(ivImage);
-                    tvName.setText(user.getName());
-                    tvMail.setText(user.getScreenName());
-                    tvNumberTweet.setText(String.valueOf(user.getStatusesCount()));
-                    tvNumberFollow.setText(String.valueOf(user.getFavouritesCount()));
-                    tvNumberFollower.setText(String.valueOf(user.getFollowersCount()));
-                    if (user.isProfileUseBackgroundImage()){
-                        Glide.with(ivCover.getContext())
-                                .load(coverImage)
-                                .into(ivCover);
+            mDbHelper = new DBHelper(getApplicationContext());
+            mDatabase = mDbHelper.getReadableDatabase();
+            if(isNetworkAvailable()) {
+                mClient.getProfile(new JsonHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                        super.onSuccess(statusCode, headers, response);
+                        mDbHelper.clearProfileTable();
+                        Gson gson = new Gson();
+                        User user = gson.fromJson(response.toString(), User.class);
+                        mScreenName = user.getScreenName();
+                        setDataProfile(user);
                     }
-
-                    btnChangeProfile.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent1 = new Intent(getApplicationContext(),ChangeProfileActivity.class);
-                            intent1.putExtra(KEY_AVARTAR,avatarImage);
-                            intent1.putExtra(KEY_COVER,coverImage);
-                            startActivity(intent1);
-                        }
-                    });
-                }
-            });
-
+                });
+            }else {
+                mScreenName = name;
+                User user = mDbHelper.parseProfile(mDbHelper.getProfileData());
+                setDataProfile(user);
+            }
         }
 
 
@@ -232,29 +188,83 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
-    public void getUserTweet(){
-        mClient.getUserTweet(mScreenName, count, new JsonHttpResponseHandler(){
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray json) {
-                Gson gson = new Gson();
-                mTweetList = gson.fromJson(json.toString(), new TypeToken<List<Tweet>>(){}.getType() );
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-
-            }
-        });
-
+    private Boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
     }
 
-    public void getFavourite(){
-        mClient.getFavouriteList(mScreenName,count, new JsonHttpResponseHandler(){
+    private void setDataAccount(User user1){
+        String n = user1.getScreenName();
+        avatarImage = user1.getProfileImageUrl();
+        coverImage = user1.getProfileBackgroundImageUrl();
+        mId = user1.getUid();
+        mAdapter = new ProfileTablayoutAdapter(getSupportFragmentManager());
+        mViewPager.setAdapter(mAdapter);
+        mTablayout.setupWithViewPager(mViewPager);
+        btnChangeProfile.setVisibility(View.GONE);
+
+        if (user1.getFollowRequestSent()){
+            btnFriend.setText("UNFOLLOW");
+        }
+        else {
+            btnFriend.setText("FOLLOW");
+        }
+        btnFriend.setVisibility(View.VISIBLE);
+        Glide.with(ivImage.getContext())
+                .load(user1.getProfileImageUrl())
+                .into(ivImage);
+        tvName.setText(user1.getName());
+        tvMail.setText("@"+user1.getScreenName());
+        tvNumberTweet.setText(String.valueOf(user1.getStatusesCount()));
+        tvNumberFollow.setText(String.valueOf(user1.getFavouritesCount()));
+        tvNumberFollower.setText(String.valueOf(user1.getFollowersCount()));
+        if (user1.isProfileUseBackgroundImage()){
+            Glide.with(ivCover.getContext())
+                    .load(coverImage)
+                    .into(ivCover);
+        }
+        btnChangeProfile.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray json) {
-                Gson gson = new Gson();
-                mFavouriteList = gson.fromJson(json.toString(), new TypeToken<List<Tweet>>(){}.getType() );
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getApplicationContext(),ChangeProfileActivity.class);
+                intent1.putExtra(KEY_AVARTAR,avatarImage);
+                intent1.putExtra(KEY_COVER,coverImage);
+                startActivity(intent1);
+            }
+        });
+    }
+
+    private void setDataProfile(User user){
+        avatarImage = user.getProfileImageUrl();
+        coverImage = user.getProfileBackgroundImageUrl();
+        mId = user.getUid();
+        mAdapter = new ProfileTablayoutAdapter(getSupportFragmentManager());
+        mViewPager.setAdapter(mAdapter);
+        mTablayout.setupWithViewPager(mViewPager);
+        btnChangeProfile.setVisibility(View.VISIBLE);
+        btnFriend.setVisibility(View.GONE);
+        Glide.with(ivImage.getContext())
+                .load(user.getProfileImageUrl())
+                .into(ivImage);
+        tvName.setText(user.getName());
+        tvMail.setText(user.getScreenName());
+        tvNumberTweet.setText(String.valueOf(user.getStatusesCount()));
+        tvNumberFollow.setText(String.valueOf(user.getFavouritesCount()));
+        tvNumberFollower.setText(String.valueOf(user.getFollowersCount()));
+        if (user.isProfileUseBackgroundImage()){
+            Glide.with(ivCover.getContext())
+                    .load(coverImage)
+                    .into(ivCover);
+        }
+
+        btnChangeProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getApplicationContext(),ChangeProfileActivity.class);
+                intent1.putExtra(KEY_AVARTAR,avatarImage);
+                intent1.putExtra(KEY_COVER,coverImage);
+                startActivity(intent1);
             }
         });
     }

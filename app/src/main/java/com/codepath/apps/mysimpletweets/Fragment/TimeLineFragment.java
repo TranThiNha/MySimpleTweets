@@ -1,6 +1,11 @@
 package com.codepath.apps.mysimpletweets.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,7 +16,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.codepath.apps.mysimpletweets.DBHelper.DBHelper;
 import com.codepath.apps.mysimpletweets.helper.DividerItemDecoration;
 import com.codepath.apps.mysimpletweets.R;
 import com.codepath.apps.mysimpletweets.Dialog.ReplyDialog;
@@ -46,6 +53,8 @@ public class TimeLineFragment extends Fragment {
     private ProgressBar pbMoreLoading;
     private LinearLayoutManager mLayoutManager;
     static int page = 1;
+    private DBHelper mDbHelper;
+    private SQLiteDatabase mDatabase;
     public TimeLineFragment() {
     }
 
@@ -60,6 +69,8 @@ public class TimeLineFragment extends Fragment {
         View rootiew =inflater.inflate(R.layout.activity_timeline,container,false);
         rvTweets = (RecyclerView) rootiew.findViewById(R.id.rvResult);
         pbMoreLoading = (ProgressBar) rootiew.findViewById(R.id.pdMoreLoading);
+        mDbHelper = new DBHelper(getContext());
+        mDatabase = mDbHelper.getReadableDatabase();
         return rootiew;
     }
 
@@ -72,8 +83,13 @@ public class TimeLineFragment extends Fragment {
         rvTweets.setAdapter(mTweetsArrayAdapter);
         client = TwitterApplication.getRestClient();
         RecyclerView.ItemDecoration decoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL_LIST);
-
         rvTweets.addItemDecoration(decoration);
+        if (!isNetworkAvailable()){
+            mTweetsArrayAdapter.setTweet(mDbHelper.parseHomeTimeLine(mDbHelper.getHomeTimeLineData()));
+        }
+        else {
+            mDbHelper.clearHomeTimeLineTable();
+        }
         rvTweets.addOnScrollListener(new EndlessRecyclerViewScrollListener(mLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount) {
@@ -86,7 +102,15 @@ public class TimeLineFragment extends Fragment {
         mTweetsArrayAdapter.setOnProfileImageClickListener(new TweetsArrayAdapter.ProfileImageClickListener() {
             @Override
             public void onProfileImageClick(Tweet tweet) {
-                client.getAccount(tweet.getUser().getUid(), tweet.getUser().getScreenName(),new JsonHttpResponseHandler(){
+                if(!isNetworkAvailable()){
+                    Intent intent = new Intent(getContext(), ProfileActivity.class);
+                    intent.putExtra("id",tweet.getUserId());
+                    intent.putExtra("name",tweet.getUserScreenName());
+                    String  name= tweet.getUserScreenName();
+                    startActivity(intent);
+                }
+
+                client.getAccount(tweet.getUserId(), tweet.getUserScreenName(),new JsonHttpResponseHandler(){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                         super.onSuccess(statusCode, headers, response);
@@ -106,17 +130,16 @@ public class TimeLineFragment extends Fragment {
             public void onItemClick(Tweet tweet)
             {
                 Intent intent = new Intent(getContext(), DetailTweetActivity.class);
-
                 List<Media> medias = tweet.getMedias();
-                if(medias!=null && medias.size() > 0)
+                if(tweet.getMediaUrl()!=null)
                 {
-                    intent.putExtra("media",tweet.getMedias().get(0).getMediaUrl());
+                    intent.putExtra("media",tweet.getMediaUrl());
                 }
                 else
                     intent.putExtra("media","");
                 intent.putExtra("id",tweet.getUid());
-                intent.putExtra("profileImage",tweet.getUser().getProfileImageUrl());
-                intent.putExtra("userName",tweet.getUser().getScreenName());
+                intent.putExtra("profileImage",tweet.getAvatarUrl());
+                intent.putExtra("userName",tweet.getUserScreenName());
                 intent.putExtra("timeStamp",tweet.getRelativeTimestamp());
                 intent.putExtra("body",tweet.getBody());
                 intent.putExtra("retweet",tweet.getRetweetCount());
@@ -148,10 +171,14 @@ public class TimeLineFragment extends Fragment {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray json) {
                 Log.d("Debug",json.toString());
-
                 Gson gson = new Gson();
                 List<Tweet> mTweetList = gson.fromJson(json.toString(), new TypeToken<List<Tweet>>(){}.getType() );
-
+                for (int i =0;i < mTweetList.size();i++){
+                    mTweetList.get(i).getUser();
+                    mTweetList.get(i).getMedias();
+                    mDbHelper.insertTweetIntoHomeTimeLine(mTweetList.get(i));
+                    mDbHelper.insertAccount(mTweetList.get(i).getUser());
+                }
                 mTweetsArrayAdapter.setTweet(mTweetList);//EventBus.getDefault().post(new FragmentMessageEvent(true));
                 Log.d("Debug",mTweetsArrayAdapter.toString());
             }
@@ -170,48 +197,27 @@ public class TimeLineFragment extends Fragment {
     private void populateTimelineLoadMore(int page) {
         client.getHomeTimeline(page ,new JsonHttpResponseHandler(){
             //SUCCESS
-
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray json) {
                 Log.d("Debug",json.toString());
-
                 Gson gson = new Gson();
                 List<Tweet> mTweetList = gson.fromJson(json.toString(), new TypeToken<List<Tweet>>(){}.getType() );
-
+                for (int i =0;i < mTweetList.size();i++){
+                    mTweetList.get(i).getUser();
+                    mTweetList.get(i).getMedias();
+                    mDbHelper.insertTweetIntoHomeTimeLine(mTweetList.get(i));
+                    String  n = mTweetList.get(i).getUser().getScreenName();
+                    mDbHelper.insertAccount(mTweetList.get(i).getUser());
+                }
                 mTweetsArrayAdapter.addTweet(mTweetList);
-
                 Log.d("Debug",mTweetsArrayAdapter.toString());
-            }
-            //FAILED
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
             }
         });
     }
-    @Override
-    public void onStart() {
-        super.onStart();
-        //EventBus.getDefault().register(this);
-    }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-       // EventBus.getDefault().unregister(this);
-    }
-
-    public static class FragmentMessageEvent
-    {
-        public FragmentMessageEvent(boolean isFinishRefresh)
-        {
-            this.isFinishRefresh = isFinishRefresh;
-        }
-
-        public boolean isFinishRefresh() {
-            return isFinishRefresh;
-        }
-
-        boolean isFinishRefresh = false;
+    private Boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
     }
 }

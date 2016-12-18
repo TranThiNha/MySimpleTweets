@@ -54,6 +54,50 @@ public class User implements Serializable {
     @SerializedName("profile_use_background_image")
     private boolean profileUseBackgroundImage;
 
+    public void setStatusesCount(int statusesCount) {
+        this.statusesCount = statusesCount;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setFollowRequestSent(boolean followRequestSent) {
+        this.followRequestSent = followRequestSent;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setUid(long uid) {
+        this.uid = uid;
+    }
+
+    public void setScreenName(String screenName) {
+        this.screenName = screenName;
+    }
+
+    public void setProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
+    }
+
+    public void setFavouritesCount(int favouritesCount) {
+        this.favouritesCount = favouritesCount;
+    }
+
+    public void setFollowersCount(int followersCount) {
+        this.followersCount = followersCount;
+    }
+
+    public void setProfileBackgroundImageUrl(String profileBackgroundImageUrl) {
+        this.profileBackgroundImageUrl = profileBackgroundImageUrl;
+    }
+
+    public void setProfileUseBackgroundImage(boolean profileUseBackgroundImage) {
+        this.profileUseBackgroundImage = profileUseBackgroundImage;
+    }
+
     public boolean isProfileUseBackgroundImage() {
         return profileUseBackgroundImage;
     }

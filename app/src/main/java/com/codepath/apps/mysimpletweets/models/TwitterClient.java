@@ -13,15 +13,13 @@ import com.loopj.android.http.RequestParams;
 public class TwitterClient extends OAuthBaseClient {
 	public static final Class<? extends Api> REST_API_CLASS = TwitterApi.class;
 	public static final String REST_URL = "https://api.twitter.com/1.1/";
-	public static final String REST_CONSUMER_KEY = "SQFDSv2i2gGW1W3Nb8yCjUAiD";
-	public static final String REST_CONSUMER_SECRET = "UiRlq6pwIJKnkEMtiPF1IEiOGaRJ9cJv9LRiedeIuLKjLmkTbH";
+	public static final String REST_CONSUMER_KEY = "1eVRXqb04tOpwpDatVgqR3FwD";
+	public static final String REST_CONSUMER_SECRET = "bi3adyEJdF57Bi39VnzSReEDEHC8DV8BNtApknnIyFfebJpZfb";
 	public static final String REST_CALLBACK_URL = "oauth://cpsimpletweets";
 
 	public TwitterClient(Context context) {
 		super(context, REST_API_CLASS, REST_URL, REST_CONSUMER_KEY, REST_CONSUMER_SECRET, REST_CALLBACK_URL);
 	}
-
-
 
 
 	/* 1. Define the endpoint URL with getApiUrl and pass a relative path to the endpoint
@@ -107,12 +105,6 @@ public class TwitterClient extends OAuthBaseClient {
 		getClient().get(apiUrl,params,handler);
 	}
 
-	public void getUserTweet(String screenName, int count, AsyncHttpResponseHandler handler){
-		String apiUrl = getApiUrl("statuses/user_timeline.json?screen_name="+screenName+"&count="+count);
-		RequestParams params = new RequestParams();
-		getClient().get(apiUrl,params,handler);
-	}
-
 	public void getChatList(AsyncHttpResponseHandler handler){
 		String apiUrl = getApiUrl("direct_messages.json?count=1");
 		RequestParams params = new RequestParams();
@@ -120,8 +112,12 @@ public class TwitterClient extends OAuthBaseClient {
 	}
 
 	public void getFollwerList(String screenName, AsyncHttpResponseHandler handler){
-		String apiUrl = getApiUrl("followers/list.json?cursor=-1&screen_name="+screenName+"&skip_status=true&include_user_entities=false");
+		String apiUrl = getApiUrl("followers/list.json");
 		RequestParams params = new RequestParams();
+		//params.put("skip_status",true);
+		//params.put("cursor",-1);
+		//params.put("include_user_entities",false);
+		params.put("screen_name", screenName);
 		getClient().get(apiUrl,params,handler);
 	}
 
@@ -137,10 +133,19 @@ public class TwitterClient extends OAuthBaseClient {
 		getClient().get(apiUrl,params,handler);
 	}
 
-	public void getFavouriteList(String name, int count, AsyncHttpResponseHandler handler){
-		String apiUrl = getApiUrl("favorites/list.json?count="+count+"&screen_name="+name);
+	public void getFavouriteList(String name, int page, AsyncHttpResponseHandler handler){
+		String apiUrl = getApiUrl("favorites/list.json");
 		RequestParams params = new RequestParams();
+		params.put("page",String.valueOf(page));
+		params.put("screen_name",name);
 		getClient().get(apiUrl, params, handler);
+	}
+
+
+	public void getUserTweet(String screenName, int count, AsyncHttpResponseHandler handler){
+		String apiUrl = getApiUrl("statuses/user_timeline.json?screen_name="+screenName+"&count="+count);
+		RequestParams params = new RequestParams();
+		getClient().get(apiUrl,params,handler);
 	}
 
 }
